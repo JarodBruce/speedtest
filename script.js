@@ -18,9 +18,11 @@ socket.onmessage = (event) => {
     if (event.data.startsWith('Your IP is:')) {
         if(ipResult.textContent.includes("172.16.0.10")) {
             ipResult.textContent = "172.17.0.1";
+            console.log('IP message received:', ipResult.textContent);
             ipResult.textContent = event.data.split(': ')[1];
         }else if(ipResult.textContent.includes("172.16.0.20")) {
             ipResult.textContent = "172.18.0.1";
+            console.log('IP message received:', ipResult.textContent);
             ipResult.textContent = event.data.split(': ')[1];
         }
     } else {
