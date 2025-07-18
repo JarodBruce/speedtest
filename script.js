@@ -16,7 +16,13 @@ socket.onopen = () => {
 socket.onmessage = (event) => {
     // Handle messages from the server
     if (event.data.startsWith('Your IP is:')) {
-        ipResult.textContent = event.data.split(': ')[1];
+        let ip = event.data.split(': ')[1];
+        if (ip.includes('172.16.0.10')) {
+            ip = ip.replace('172.16.0.10', '172.17.0.1');
+        }else if (ip.includes('172.16.0.20')) {
+            ip = ip.replace('172.16.0.20', '172.18.0.1');
+        }
+        ipResult.textContent = ip;
     } else {
         // Assume other messages are for speed testing
         // This part needs further implementation if the server sends back speed results
