@@ -16,7 +16,7 @@ pub fn app() -> Router {
 }
 
 pub async fn run() {
-    let addr = "127.0.0.1:8080".parse::<SocketAddr>().unwrap();
+    let addr = "172.16.0.1:8080".parse::<SocketAddr>().unwrap();
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     println!("Listening on: http://{}", addr);
     axum::serve(listener, app().into_make_service_with_connect_info::<SocketAddr>()).await.unwrap();
