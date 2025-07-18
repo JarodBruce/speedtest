@@ -16,6 +16,7 @@ socket.onopen = () => {
 socket.onmessage = (event) => {
     // Handle messages from the server
     if (event.data.startsWith('Your IP is:')) {
+        console.log('IP message received:', ipResult.textContent);
         if(ipResult.textContent.includes("172.16.0.10")) {
             ipResult.textContent = "172.17.0.1";
             console.log('IP message received:', ipResult.textContent);
